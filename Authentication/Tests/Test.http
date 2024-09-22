@@ -1,0 +1,32 @@
+@baseUrl = https://localhost:7270
+@adminUsername = admin@stewart.dev
+@adminPassword = Password123-
+
+@username = user@stewart.dev
+@password = Password123-
+
+### 1. Authenticate and Obtain JWT Token for admin User
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "{{adminUsername}}",
+    "password": "{{adminPassword}}"
+}
+
+### 2. Authenticate and Obtain JWT Token for normal User
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
+### 2. Access Product API
+GET {{baseUrl}}/api/product/GetProducts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidXNlckBzdGV3YXJ0LmRldiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiMjFmNzBlM2EtY2NlZC00NTc0LTk1YjAtMjNiMzU1ZTkzMmVhIiwianRpIjoiMDRmZDY0MGMtYjI5OS00N2ZkLTk4MTAtMTdmNDYwZDM2MjIyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVVNFUiIsImV4cCI6MTcyNzAzNTk1NywiaXNzIjoiQXV0aGVudGljYXRpb25KV1QiLCJhdWQiOiJBdXRoZW50aWNhdGlvbkpXVCJ9.ms9wu_SNzGsYECvKP4xiePeXq-1xj0lNO02cGBDxN4o
+
+### 3. Access Product API, ADMIN USERS ONLY
+GET {{baseUrl}}/api/product/GetAllProducts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidXNlckBzdGV3YXJ0LmRldiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiMjFmNzBlM2EtY2NlZC00NTc0LTk1YjAtMjNiMzU1ZTkzMmVhIiwianRpIjoiMDRmZDY0MGMtYjI5OS00N2ZkLTk4MTAtMTdmNDYwZDM2MjIyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVVNFUiIsImV4cCI6MTcyNzAzNTk1NywiaXNzIjoiQXV0aGVudGljYXRpb25KV1QiLCJhdWQiOiJBdXRoZW50aWNhdGlvbkpXVCJ9.ms9wu_SNzGsYECvKP4xiePeXq-1xj0lNO02cGBDxN4o
