@@ -1,4 +1,4 @@
-@baseUrl = https://localhost:7270
+@baseUrl = http://localhost:5070
 @adminUsername = admin@stewart.dev
 @adminPassword = Password123-
 
