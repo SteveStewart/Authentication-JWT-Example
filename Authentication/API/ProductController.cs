@@ -15,9 +15,9 @@ namespace Authentication.API
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var username = User.Identity.Name;
-
+            var roles = User.FindAll(ClaimTypes.Role).Select(r => r.Value).ToList();
             var products = new string[] { "Product 1", "Product 2", "Product 3" };
-            return Ok(new { UserId = userId, UserName = username, Products = products });
+            return Ok(new { userId = userId, roles = roles, userName = username, products = products });
         }
 
         [HttpGet("GetAllProducts")]
@@ -31,7 +31,7 @@ namespace Authentication.API
             var roles = User.FindAll(ClaimTypes.Role).Select(r => r.Value).ToList();
 
             var products = new string[] { "Product 1", "Product 2", "Product 3", "Product 4 Discontinued" };
-            return Ok(new { UserId = userId, Roles = roles, UserName = username, Products = products });
+            return Ok(new { userId = userId, Roles = roles, userName = username, products = products });
         }
     }
 }
